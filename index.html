@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Valentine's Day Baby ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow-x: hidden;
+      padding: 20px;
+      position: relative;
+    }
+
+    .card {
+      max-width: 600px;
+      width: 100%;
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      text-align: center;
+      position: relative;
+      z-index: 10; /* stay above floating elements */
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    h1 {
+      color: #e63946;
+      font-size: 2.2em;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #555;
+      font-size: 1.05em;
+      line-height: 1.6;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: #e63946;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    /* Floating stickers */
+    .floating-sticker {
+      position: absolute;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="love.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+
+    <!-- PHOTO GRID -->
+    <div class="photo-grid">
+      <img src="img_2681.jpeg">
+      <img src="img_2998.jpeg">
+      <img src="img_3001.jpeg">
+      <img src="img_3002.jpeg">
+    </div>
+
+    <h1>Happy Valentine’s Day ❤️</h1>
+
+    <p>
+      Dear Estelle Yap Zhi En 💕<br><br>
+      From Calvier ❤️<br><br>
+      No words can explain how much I really love you.
+      From the first day we met till our first Valentine together,
+      we have spent so many firsts side by side.
+      I would love to spend the rest of my life with you,
+      my one and only.<br><br>
+      You may be a pain in the ass at times,
+      but I would rather it be you than anybody else 💖
+    </p>
+
+    <div class="photo-grid">
+      <img src="img_3003.jpeg">
+      <img src="img_3004.jpeg">
+      <img src="img_3005.jpeg">
+      <img src="img_3006.jpeg">
+    </div>
+
+  </div>
+
+<script>
+  // Background music
+  const audio = new Audio('love.mp3');
+  audio.loop = true;
+
+  document.body.addEventListener('click', () => {
+    audio.play();
+  }, { once: true }); // play on first click to bypass autoplay restriction
+
+  // Floating hearts
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerText = '❤️';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (10 + Math.random() * 30) + 'px';
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+  }
+  setInterval(createHeart, 500);
+
+  // Floating stickers (Kuromi & Mofusand)
+  const stickers = ['kuromi.png', 'mofusand.png'];
+
+  function createSticker() {
+    const sticker = document.createElement('img');
+    sticker.src = stickers[Math.floor(Math.random() * stickers.length)];
+    sticker.className = 'floating-sticker';
+    sticker.style.left = Math.random() * 100 + 'vw';
+    sticker.style.width = (30 + Math.random() * 50) + 'px';
+    document.body.appendChild(sticker);
+
+    // Animate upwards
+    sticker.animate([
+      { transform: 'translateY(100vh)', opacity: 1 },
+      { transform: 'translateY(-10vh)', opacity: 0 }
+    ], {
+      duration: 6000,
+      easing: 'linear'
+    });
+
+    setTimeout(() => sticker.remove(), 6000);
+  }
+  setInterval(createSticker, 1000);
+</script>
+
+</body>
+</html>
